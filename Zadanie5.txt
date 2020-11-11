@@ -1,4 +1,4 @@
--- Zadanie 6
+-- Zadanie 5
 -- 298243
 -- 1
 	CREATE TABLE obiekty(id_obiektu SERIAL, nazwa VARCHAR(10), geom geometry);
