@@ -1,0 +1,56 @@
+-- Zadanie 6
+-- 1
+	- PPM na warstwę trees -> właściwości -> styl -> wartość unikalna -> VEGDESC -> klasyfikuj -> wybór kolorów
+	- Group Stats -> warstwa trees -> Values: sum oraz AREA_KM2, Rows: VEGDESC -> oblicz
+	- pola powierzchni lasów:
+		
+		VEGDESC
+		
+		Deciduous	165378
+		Evergreen	164579
+		Mixed Trees	189274
+
+-- 2 
+	 - Wektor -> Narzędzia zarządzania danymi -> Podziel warstwę wektorową -> trees -> VEGDESC pole z id + ignorowanie błędów
+
+-- 3 
+	- filtr regions (nazwa), 
+	- edycja warstwy + kopiuj, wklej obiekt jako warstwa,
+	- wektor -> geoprocesing -> przytnij -> railroads -> nowe pole -> uruchom kalkulator pól, length -> group stats, nowe pole z length i sum
+	
+	Długość linii kolejowych dla tego regionu wynosi 268506
+
+-- 4 
+	- Group Stats -> airports -> Values: ELEV, filter: "USE"  LIKE 'Military', Rows: count oraz average
+
+	Elev = 593,25 count = 8 (lotnisk)
+	"ELEV" > 1400, 1 lotnisko
+
+	- pokaż wybrane na mapie, usuń zaznaczone (edit mode)
+
+-- 5 
+	- tak jak w zadaniu 3 + nowa warstwa -> przycinanie -> mamy 11 budynków 
+	- wektor -> geoprocessing -> bufor -> 100km
+	
+	Każdy budynek jest w dystansie nie większym niż 100km od rzeki
+
+-- 6
+	Wektor -> Narzędzia analizy -> Przecięcia linii -> majrivers i railroads
+	
+	Rzeki przecinają się w 8 miejscach
+
+-- 7 
+	Wektor -> Narzędzia geometrii -> Wydobądź wierzchołki -> railroads
+	
+	Są 662 węzły.
+
+-- 8 
+	Tak jak w zadaniu 5 +
+	- wektor -> geoprocesing -> różnica -> bufor lotnisk -> bufor linii kolejowych
+
+	Brak dróg moi drodzy :(
+
+-- 9
+	- GroupStats -> AREA_KM -> sum -> powierzchnia 24719.76
+	
+	Zredukowano 7469 wierzchołków -> po redukcji 6175 (- 1294), powierzchnia 24721.6
