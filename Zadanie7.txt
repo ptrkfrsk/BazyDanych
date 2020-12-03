@@ -1,0 +1,12 @@
+-- Baza i rozszerzenie
+	CREATE DATABASE cw7;
+	CREATE EXTENSION postgis_raster;
+-- Katalog z postgresem -> zmienna środowiskowa PATH (dla Windows)
+-- Przywrócenie z pliku backup	
+	pg_restore -U postgres -d cw7 postgis_raster.backup
+-- Załadowanie rastrów
+	raster2pgsql -s 3763 -N -32767 -t 100x100 -I -C -M -d srtm_1arc_v3.tif rasters.dem > dem.sql
+	raster2pgsql -s 3763 -N -32767 -t 100x100 -I -C -M -d srtm_1arc_v3.tif rasters.dem | psql -d cw7 -U postgres
+	raster2pgsql -s 3763 -N -32767 -t 128x128 -I -C -M -d Landsat8_L1TP_RGBN.TIF rasters.landsat8 | psql -d cw7 -U postgres
+-- Zmiana nazwy
+	ALTER SCHEMA schema_name RENAME to frasik;
